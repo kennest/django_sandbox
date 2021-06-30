@@ -15,7 +15,7 @@ def download_large_file(self, seconds):
     file_size = response.headers['Content-length']
     file_name = url.split("/")[-1]
     file_name = os.path.join(MEDIA_ROOT, file_name)
-    print(f"File Path => {file_name}")
+    #print(f"File Path => {file_name}")
     with open(file_name, 'wb') as f:
         for chunk in response.iter_content(chunk_size=1024):
             if chunk:  # filter out keep-alive new chunks

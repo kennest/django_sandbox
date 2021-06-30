@@ -4,5 +4,5 @@ from .tasks import download_large_file, my_task
 
 
 def index(request):
-    result = download_large_file.delay(10)
+    result = download_large_file.delay(1)
     return render(request, 'celery/index.html', context={'task_id': result.task_id})
