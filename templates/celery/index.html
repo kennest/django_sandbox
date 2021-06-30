@@ -1,0 +1,29 @@
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html">
+<title>
+Download Huge Files</title>
+<style type="text/css" rel="stylesheet">
+.progress-bar{
+    background-color: #68a9ef;
+     width: 10%;
+}</style>
+</head>
+<body>
+<div id="celery-result"></div>
+<div class='progress-wrapper'>
+  <div id='progress-bar' class='progress-bar'>&nbsp;</div>
+</div>
+<div id="progress-bar-message">Waiting for progress to start...</div>
+<script src="{% static 'celery_progress/celery_progress.js' %}"></script>
+<script type='text/javascript'>
+document.addEventListener("DOMContentLoaded", function () {
+  var progressUrl = "{% url 'celery_progress:task_status' task_id %}";
+  console.log(progressUrl);
+  CeleryProgressBar.initProgressBar(progressUrl);
+});
+</script>
+</body>
+</html>
